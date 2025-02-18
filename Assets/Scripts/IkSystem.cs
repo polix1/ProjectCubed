@@ -27,7 +27,7 @@ public class IkSystem : MonoBehaviour
             if(Physics.Raycast(Points[i].position, Vector3.down, out Hits[i])){
                 if(Vector3.Distance(Hits[i].point, Targets[i].position) > stepDistance && ShouldWalkLegs(i))
                 {   
-                    Targets[i].position = Vector3.Lerp(Targets[i].position, Hits[i].point, 100 * Time.deltaTime);
+                    Targets[i].position = Vector3.Lerp(Targets[i].position, Hits[i].point, 20 * Time.deltaTime);
                 }
             }
         }  
