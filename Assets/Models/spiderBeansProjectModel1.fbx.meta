@@ -3,7 +3,77 @@ guid: c60f2cb1f1bfc40a0a90502010f31106
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: f2bb57098e03743028d24255a5bde95f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: e26992901921047ec9a4eb5e41f4aa48, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowerLeg1
+    second: {fileID: 2100000, guid: 3aec6eb7d887145739bd1f4fb10ac6fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowerLeg2
+    second: {fileID: 2100000, guid: 35b5c5be455874a29a4d325c11de2fb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowerLeg3
+    second: {fileID: 2100000, guid: 7788653ea9ce045249cef1d5b4573222, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowerLeg4
+    second: {fileID: 2100000, guid: 33482e6a96e404933bbc6a9ad613898f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowerLeg5
+    second: {fileID: 2100000, guid: d8bb167f154ad454290776b45eec5786, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LowerLeg6
+    second: {fileID: 2100000, guid: c715d012742b14b8da0dbff110e11d62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperLeg1
+    second: {fileID: 2100000, guid: 76e4f5566e27a4557b95524bca5fe58e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperLeg2
+    second: {fileID: 2100000, guid: d315aa6a55b204a61bb6f78f92ea07ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperLeg3
+    second: {fileID: 2100000, guid: 18f173413e0b24834965f2d162ad8b46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperLeg4
+    second: {fileID: 2100000, guid: 7d15870dfed6940fe9c1c644a466d548, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperLeg5
+    second: {fileID: 2100000, guid: 4fddac28b884a4941a6aa27d789b1fa2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UpperLeg6
+    second: {fileID: 2100000, guid: 9a721df61497f4d61abedaf0993465c6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -90,7 +160,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.004
+    globalScale: 0.4
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

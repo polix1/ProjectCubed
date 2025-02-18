@@ -10,7 +10,8 @@ public class IkSystem : MonoBehaviour
 
 
     private int stepIndex;
-    private float stepDuration = .1f;
+    [SerializeField] float stepDuration = 0.1f;
+    [SerializeField] float stepDistance;
     private bool isStepping = false;
 
     void Start()
@@ -24,9 +25,9 @@ public class IkSystem : MonoBehaviour
         for (int i = 0; i < Targets.Length; i++)
         {
             if(Physics.Raycast(Points[i].position, Vector3.down, out Hits[i])){
-                if(Vector3.Distance(Hits[i].point, Targets[i].position) > .5f && ShouldWalkLegs(i))
-                {
-                    Targets[i].position = Hits[i].point;
+                if(Vector3.Distance(Hits[i].point, Targets[i].position) > stepDistance && ShouldWalkLegs(i))
+                {   
+                    Targets[i].position = Vector3.Lerp(Targets[i].position, Hits[i].point, 100 * Time.deltaTime);
                 }
             }
         }  
@@ -47,12 +48,22 @@ public class IkSystem : MonoBehaviour
 
     bool ShouldWalkLegs(int legIndex){
         int[] [] legPairs = new int[] []{
-            new int[] {0, 4 },
-            new int[] {1 , 5},
+            new int[] {0, 4},
+            new int[] {1, 5},
             new int[] {2, 3}
         };
 
         return legPairs[stepIndex] [0] == legIndex || legPairs[stepIndex][1] ==legIndex;
+    }
+
+    void OnDrawGizmos()
+    {
+        for (int i = 0; i < Targets.Length; i++)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(Points[i].position, Vector3.down * 10);
+            Gizmos.DrawSphere(Targets[i].position, .1f);
+        }  
     }
 
 }
