@@ -1,2 +1,0 @@
-# ProjectCubed
- Cubed :)
