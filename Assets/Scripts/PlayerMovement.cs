@@ -88,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump(InputAction.CallbackContext context){
-        Debug.Log(Grounded() + " " +  _jumpHeight);
         if(!Grounded())return;
         rb.AddForce(Vector3.up * _jumpHeight , ForceMode.Impulse);
     }

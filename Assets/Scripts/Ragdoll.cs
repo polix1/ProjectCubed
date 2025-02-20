@@ -58,7 +58,6 @@ public class Ragdoll : MonoBehaviour
                 collider1.enabled = true;
             }
             playersRigidbody.isKinematic = false;
-            playersRigidbody.useGravity = true;
             playersRigidbody.detectCollisions = true;
             rigBuilder.enabled = true;
             animator.enabled = true;
@@ -77,7 +76,6 @@ public class Ragdoll : MonoBehaviour
                 collider1.enabled = false;
             }
             playersRigidbody.isKinematic = true;
-            playersRigidbody.useGravity = false;
             playersRigidbody.detectCollisions = false;
             rigBuilder.enabled = false;
             animator.enabled = false;

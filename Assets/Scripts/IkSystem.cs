@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IkSystem : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class IkSystem : MonoBehaviour
     private bool isStepping = false;
 
     private PlayerMovement playerMovement;
+
+    public Vector3 movementDirection;
 
     void Start()
     {
@@ -96,6 +99,8 @@ public class IkSystem : MonoBehaviour
 
         return center + direction * radius;
     }
+
+
 
     void OnDrawGizmos()
     {
