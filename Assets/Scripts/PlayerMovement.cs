@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float currentSpeed;
     
-
+    RaycastHit hit;
     Rigidbody rb;
 
     [SerializeField] PlayerData playerData;
@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool Grounded(){
         Ray gRay = new Ray(groundCheck.position, Vector3.down);
-        RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(gRay, out hit, _groundDistance, ground)){
             return true;
         }
@@ -49,8 +48,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-      currentSpeed = _walkingSpeed;  
-      Cursor.lockState = CursorLockMode.Locked;
+        hit = new RaycastHit();
+        currentSpeed = _walkingSpeed;  
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void OnEnable()
     {
@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         if(inputDirection.magnitude > 0){
             this.transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.eulerAngles.x, orientation.eulerAngles.y, transform.eulerAngles.z), 10 * Time.deltaTime);
         }
+        RaycastHit raycastHit = new RaycastHit();
+        Physics.Raycast(groundCheck.position, Vector3.down, out raycastHit);
     }
 
     void CalculateMovement(){
@@ -90,10 +92,7 @@ public class PlayerMovement : MonoBehaviour
         if(!Grounded())return;
         rb.AddForce(Vector3.up * _jumpHeight , ForceMode.Impulse);
     }
-    void LateUpdate()
-    {
 
-    }
 
     private void FixedUpdate() {
         Movement();

@@ -8,6 +8,9 @@ public class IkSystem : MonoBehaviour
     [SerializeField] Transform[] Targets;
     [SerializeField] RaycastHit[] Hits;
 
+    [SerializeField] Transform body;
+    [SerializeField] float raduis;
+
 
     private int stepIndex;
     [SerializeField] float stepDuration = 0.1f;
@@ -23,6 +26,12 @@ public class IkSystem : MonoBehaviour
         StartCoroutine(StepCycel());
 
         playerMovement = GetComponent<PlayerMovement>();
+
+        for (int i = 0; i < Points.Length; i++)
+        {
+            Points[i].position = GetPointOnCircle(body.position, Points[i].position, 1);
+            
+        }
     }
 
     void Update()
@@ -78,14 +87,27 @@ public class IkSystem : MonoBehaviour
         return legPairs[stepIndex] [0] == legIndex || legPairs[stepIndex][1] ==legIndex;
     }
 
+
+    Vector3 GetPointOnCircle(Vector3 center, Vector3 point, float radius)
+    {
+        Vector3 direction = point - center;
+
+        direction.Normalize();
+
+        return center + direction * radius;
+    }
+
     void OnDrawGizmos()
     {
         for (int i = 0; i < Targets.Length; i++)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawRay(Points[i].position, Vector3.down * 10);
-            Gizmos.DrawSphere(Targets[i].position, .1f);
-        }  
+            Gizmos.DrawSphere(Targets[i].position, 0.1f);
+        }
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(body.position, raduis);
     }
 
 }
