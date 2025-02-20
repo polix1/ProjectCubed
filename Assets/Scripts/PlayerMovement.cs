@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] LayerMask ground;
 
 
-    private bool Grounded(){
+    public bool Grounded(){
         Ray gRay = new Ray(groundCheck.position, Vector3.down);
         RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(gRay, out hit, _groundDistance, ground)){
