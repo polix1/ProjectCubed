@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private float currentSpeed;
     
     RaycastHit hit;
+
+    RaycastHit arc;
     Rigidbody rb;
 
     [SerializeField] PlayerData playerData;
@@ -22,6 +24,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Transform groundCheck, orientation, mainCamera;
     [SerializeField] LayerMask ground;
+
+    public float angle = 45f;
+    public float radius = 5f;
+    public int resolution = 10;
+
+    public Quaternion rotationOffset;
+    public Vector3 poisitionOffset;
+    public LayerMask layer;
 
 
     public bool Grounded(){
@@ -49,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         hit = new RaycastHit();
+        arc = new RaycastHit();
         currentSpeed = _walkingSpeed;  
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -71,6 +82,11 @@ public class PlayerMovement : MonoBehaviour
         }
         RaycastHit raycastHit = new RaycastHit();
         Physics.Raycast(groundCheck.position, Vector3.down, out raycastHit);
+
+        if(PhysicsExtension.ArcCast(transform.position, transform.rotation, angle, radius, resolution, layer, out arc, rotationOffset, poisitionOffset)){
+            Debug.Log(arc.collider.name);
+        }
+
     }
 
     void CalculateMovement(){
@@ -99,5 +115,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement(){
         rb.velocity = new Vector3(movementDirection.x * currentSpeed * 100 * Time.fixedDeltaTime, rb.velocity.y -2f, movementDirection.z * currentSpeed * 100 * Time.fixedDeltaTime);
+    }
+
+    void OnDrawGizmos()
+    {
+        PhysicsExtension.DrawArcGizmo(transform.position, transform.rotation, angle, radius, resolution, layer, rotationOffset, poisitionOffset);
     }
 }
